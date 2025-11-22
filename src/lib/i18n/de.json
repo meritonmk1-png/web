@@ -1,0 +1,149 @@
+{
+    "nav": {
+        "services": "Leistungen",
+        "pricing": "Preise",
+        "ai_pilot": "KI-Pilot",
+        "contact": "Kontakt",
+        "start_project": "Projekt Starten"
+    },
+    "hero": {
+        "headline": "KI-gestützte Websites. Schnell. Sicher. Wachstumsorientiert.",
+        "subheadline": "Erhalten Sie eine leistungsstarke Website und intelligente KI-Automatisierungen innerhalb weniger Tage. Perfekt optimiert für SEO, Performance und Conversion.",
+        "cta_primary": "Projekt Starten",
+        "cta_secondary": "Preise Ansehen"
+    },
+    "value_prop": {
+        "headline": "Die perfekte Mischung aus Agilität und Agentur-Qualität",
+        "body": "Keine teure Agentur. Kein unzuverlässiger Freelancer. Sie arbeiten direkt mit mir und erhalten hochwertige Ergebnisse, schnelle Kommunikation und klare Prozesse.",
+        "key_point": "Ein Ansprechpartner. Keine Bürokratie. Fokus auf Umsatz und Effektivität."
+    },
+    "services": {
+        "headline": "Leistungen für moderne, wachstumsorientierte Unternehmen",
+        "modern_websites": {
+            "title": "Moderne Websites",
+            "features": [
+                "Extrem schnelle Ladezeiten",
+                "SEO-optimierte Struktur",
+                "Conversion-orientiertes Design",
+                "Mobil optimiert"
+            ]
+        },
+        "ai_integrations": {
+            "title": "KI-Integrationen",
+            "features": [
+                "Chatbots",
+                "Lead-Qualifizierung",
+                "Automatisierte Workflows",
+                "Interne Automatisierungen"
+            ]
+        },
+        "growth_maintenance": {
+            "title": "Wartung & Wachstum",
+            "features": [
+                "Regelmäßige Updates",
+                "Sicherheit",
+                "Optimierungen & Weiterentwicklung"
+            ]
+        }
+    },
+    "differentiators": {
+        "headline": "Was macht meine Leistungen besonders?",
+        "speed": "Erster Prototyp in 48 Stunden. Voller Launch in 7 Tagen.",
+        "ai_ready": "Jede Website ist bereit für zukünftige KI-Erweiterungen.",
+        "direct_access": "Sie arbeiten direkt mit mir, Meriton – keine Zwischenhändler.",
+        "transparent_process": "Klare Schritte, täglicher Fortschritt, zuverlässige Lieferung."
+    },
+    "why_me": {
+        "headline": "Ergebnisse statt Ausreden",
+        "points": [
+            "Hochmoderne Technologien",
+            "Klare Prozesse",
+            "Fokus auf Business-Wachstum",
+            "Transparente und faire Preise"
+        ]
+    },
+    "process": {
+        "headline": "Strukturierter Prozess. Planbare Ergebnisse.",
+        "steps": [
+            {
+                "title": "Discovery",
+                "desc": "Wir definieren Ihre Ziele und den Umfang."
+            },
+            {
+                "title": "KI-Pilot (Optional)",
+                "desc": "Ein risikoarmer Prototyp einer KI-Funktion, um den Mehrwert zu beweisen."
+            },
+            {
+                "title": "Entwicklung & Iteration",
+                "desc": "Schnelle Entwicklung mit laufendem Feedback."
+            },
+            {
+                "title": "Launch",
+                "desc": "Deployment, Domain, SEO-Setup und Performance-Checks."
+            },
+            {
+                "title": "Weiterentwicklung",
+                "desc": "Wechsel zu Wartung/Wachstum für Verbesserungen."
+            }
+        ]
+    },
+    "pricing": {
+        "headline": "Klare Preise. Kein Risiko.",
+        "launchpad": {
+            "title": "Launchpad",
+            "price": "€350",
+            "for": "Ideen-Validierung & kleine Portfolios",
+            "features": [
+                "5 Seiten",
+                "Mobil optimiert",
+                "Basis SEO",
+                "Kontaktformular"
+            ],
+            "delivery": "Lieferzeit: 7 Tage"
+        },
+        "growth": {
+            "title": "Growth",
+            "price": "€650",
+            "badge": "Beliebt",
+            "for": "Kleine Unternehmen auf Wachstumskurs",
+            "features": [
+                "Alles aus Launchpad",
+                "CMS",
+                "Fortgeschrittenes SEO",
+                "Basis KI-Chatbot",
+                "Performance Boost"
+            ],
+            "delivery": "Lieferzeit: 10–14 Tage"
+        },
+        "scale": {
+            "title": "Scale",
+            "price": "€950",
+            "for": "Etablierte Unternehmen",
+            "features": [
+                "Alles aus Growth",
+                "Individuelle Automatisierung",
+                "Mehrsprachigkeit",
+                "Analytics Dashboard",
+                "Priority Support"
+            ],
+            "delivery": "Lieferzeit: 14–21 Tage"
+        },
+        "addons": {
+            "maintenance": "Wartung: €30/Monat",
+            "custom_ai": "Individuelle KI-Workflows: ab €200"
+        }
+    },
+    "about": {
+        "headline": "Hallo, ich bin Meriton.",
+        "text": "Ich bin Webentwickler und KI-Experte aus Deutschland. Ich entwickle Websites und Automatisierungen, die Unternehmen schneller, effizienter und konkurrenzfähiger machen."
+    },
+    "footer": {
+        "copyright": "© 2025 Meriton Selimi",
+        "built_with": "Erstellt mit SvelteKit & KI",
+        "links": {
+            "imprint": "Impressum",
+            "privacy": "Datenschutz",
+            "contact": "Kontakt"
+        }
+    }
+}

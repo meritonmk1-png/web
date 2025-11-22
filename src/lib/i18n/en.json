@@ -1,0 +1,149 @@
+{
+    "nav": {
+        "services": "Services",
+        "pricing": "Pricing",
+        "ai_pilot": "AI Pilot",
+        "contact": "Contact",
+        "start_project": "Start Project"
+    },
+    "hero": {
+        "headline": "AI-Driven Websites. Built for Speed. Engineered for Growth.",
+        "subheadline": "Stop waiting months for an agency. Get a high-performance website and smart AI automations in days—not weeks.",
+        "cta_primary": "Start Your Project",
+        "cta_secondary": "View Pricing"
+    },
+    "value_prop": {
+        "headline": "The Perfect Balance Between Freelance Agility and Agency Quality",
+        "body": "Skip the overpriced agencies and unreliable freelancers. I deliver studio-level quality, ultra-fast execution, and direct collaboration with one expert—no account managers, no delays, no bureaucracy.",
+        "key_point": "One partner. Clear communication. Business-first execution."
+    },
+    "services": {
+        "headline": "Services Designed for Performance and Growth",
+        "modern_websites": {
+            "title": "Modern Websites",
+            "features": [
+                "Lightning-fast performance (SvelteKit + Tailwind)",
+                "SEO-optimized architecture",
+                "Conversion-focused design",
+                "Mobile-first development"
+            ]
+        },
+        "ai_integrations": {
+            "title": "AI Integrations",
+            "features": [
+                "Custom chatbots",
+                "AI lead qualification",
+                "Marketing and internal workflow automation",
+                "AI content tools for your team"
+            ]
+        },
+        "growth_maintenance": {
+            "title": "Growth & Maintenance",
+            "features": [
+                "Security & updates",
+                "Ongoing improvements",
+                "Analytics-driven optimizations"
+            ]
+        }
+    },
+    "differentiators": {
+        "headline": "What Makes My Services Different?",
+        "speed": "First prototype in 48 hours. Full launch in 7 days.",
+        "ai_ready": "Every website is built with future AI expansion in mind.",
+        "direct_access": "You work directly with me, Meriton—no intermediaries.",
+        "transparent_process": "Clear steps, daily progress, reliable delivery."
+    },
+    "why_me": {
+        "headline": "Built for Business Owners Who Want Results—Not Excuses",
+        "points": [
+            "Same technology stack used by top-tier digital agencies",
+            "Business-driven approach to design, SEO, and automation",
+            "Experience across multiple industries",
+            "Predictable timelines and fixed pricing"
+        ]
+    },
+    "process": {
+        "headline": "A Clear Process. Predictable Results.",
+        "steps": [
+            {
+                "title": "Discovery",
+                "desc": "We define your business goals, pages, and functionality."
+            },
+            {
+                "title": "The AI Pilot (Optional)",
+                "desc": "A low-risk prototype of an AI tool (e.g., chatbot or automation) to prove value before full integration."
+            },
+            {
+                "title": "Build & Iterate",
+                "desc": "Fast development with ongoing feedback."
+            },
+            {
+                "title": "Launch",
+                "desc": "Deployment, domain, SEO setup, and performance checks."
+            },
+            {
+                "title": "Evolve",
+                "desc": "Switch to Growth/Maintenance for improvements."
+            }
+        ]
+    },
+    "pricing": {
+        "headline": "Transparent Pricing. No Surprises.",
+        "launchpad": {
+            "title": "Launchpad",
+            "price": "€350",
+            "for": "Small portfolios and idea validation",
+            "features": [
+                "5-page custom website",
+                "Mobile responsive",
+                "Basic SEO",
+                "Contact form"
+            ],
+            "delivery": "Delivery in 7 days"
+        },
+        "growth": {
+            "title": "Growth",
+            "price": "€650",
+            "badge": "Most Popular",
+            "for": "Small businesses ready to scale",
+            "features": [
+                "Everything in Launchpad",
+                "CMS integration",
+                "Advanced SEO + Schema",
+                "Basic AI chatbot",
+                "Performance optimization"
+            ],
+            "delivery": "Delivery in 10–14 days"
+        },
+        "scale": {
+            "title": "Scale",
+            "price": "€950",
+            "for": "Businesses needing automation",
+            "features": [
+                "Everything in Growth",
+                "Custom AI automation (e.g., lead gen)",
+                "Multi-language website",
+                "Advanced analytics dashboard",
+                "Priority support"
+            ],
+            "delivery": "Delivery in 14–21 days"
+        },
+        "addons": {
+            "maintenance": "Maintenance & Updates: €30/month",
+            "custom_ai": "Custom AI Workflow: from €200"
+        }
+    },
+    "about": {
+        "headline": "Hi, I'm Meriton.",
+        "text": "I'm a web developer and AI specialist based in Germany. I help small businesses use modern technology—fast websites, AI automations, and clean workflows—to grow without complexity or high costs."
+    },
+    "footer": {
+        "copyright": "© 2025 Meriton Selimi",
+        "built_with": "Built with SvelteKit & AI",
+        "links": {
+            "imprint": "Imprint",
+            "privacy": "Privacy Policy",
+            "contact": "Contact"
+        }
+    }
+}
