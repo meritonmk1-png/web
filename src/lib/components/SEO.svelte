@@ -107,6 +107,10 @@
         content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
     />
     <meta name="googlebot" content="index, follow" />
+    <meta
+        name="google-site-verification"
+        content="l7mA3GcdH-05lkds1O5_PkNTfNSRbWKIWaWHhVQptl0"
+    />
     <meta name="revisit-after" content="7 days" />
     <meta name="rating" content="general" />
 
