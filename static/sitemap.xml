@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+    
+    <!-- Homepage - English -->
+    <url>
+        <loc>https://meriton.selimi.tech/</loc>
+        <lastmod>2025-11-25</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+        <xhtml:link rel="alternate" hreflang="de" href="https://meriton.selimi.tech/de"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://meriton.selimi.tech/en"/>
+    </url>
+    
+    <!-- Homepage - German -->
+    <url>
+        <loc>https://meriton.selimi.tech/de</loc>
+        <lastmod>2025-11-25</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://meriton.selimi.tech/en"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://meriton.selimi.tech/de"/>
+    </url>
+    
+    <!-- Services/Pricing Section -->
+    <url>
+        <loc>https://meriton.selimi.tech/#pricing</loc>
+        <lastmod>2025-11-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <!-- Portfolio Section -->
+    <url>
+        <loc>https://meriton.selimi.tech/#portfolio</loc>
+        <lastmod>2025-11-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- Contact Section -->
+    <url>
+        <loc>https://meriton.selimi.tech/#contact</loc>
+        <lastmod>2025-11-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+</urlset>

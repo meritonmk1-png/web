@@ -50,7 +50,7 @@
         "headline": "Was macht meine Leistungen besonders?",
         "speed": "Erster Prototyp in 48 Stunden. Voller Launch in 7 Tagen.",
         "ai_ready": "Jede Website ist bereit für zukünftige KI-Erweiterungen.",
-        "direct_access": "Sie arbeiten direkt mit mir, Meriton – keine Zwischenhändler.",
+        "direct_access": "Sie arbeiten direkt mit mir, Meriton – keine Zwischen händler.",
         "transparent_process": "Klare Schritte, täglicher Fortschritt, zuverlässige Lieferung."
     },
     "why_me": {
@@ -144,6 +144,66 @@
             "imprint": "Impressum",
             "privacy": "Datenschutz",
             "contact": "Kontakt"
+        }
+    },
+    "problem_solution": {
+        "headline_1": "Entwickelt für Geschwindigkeit.",
+        "headline_2": "Gebaut für Ergebnisse.",
+        "return_statement": "Eine Website, die für Ihr Unternehmen arbeitet",
+        "features": {
+            "fast_delivery": "// Tage statt Wochen",
+            "optimize_perf": "// Sauberer Code, sofortiges Laden",
+            "clear_structure": "// UX, die konvertiert",
+            "ai_capabilities": "// Chatbots & Automatisierung",
+            "transparent_pricing": "// Keine versteckten Kosten"
+        }
+    },
+    "why_me_code": {
+        "comment": "// Ein direkter Partner – Keine große Agentur",
+        "focus_val": "\"Geschäftswert\"",
+        "benefits": {
+            "one_point_of_contact": "ein_ansprechpartner",
+            "fast_responses": "schnelle_antworten",
+            "no_upselling": "kein_upselling",
+            "clear_communication": "klare_kommunikation",
+            "no_bureaucracy": "keine_bürokratie"
+        }
+    },
+    "portfolio": {
+        "badge": "Portfolio",
+        "headline": "Ausgewählte Arbeiten",
+        "description": "Digitale Erlebnisse schaffen, die Ästhetik mit Funktionalität verbinden. Jedes Projekt ist ein Beweis für Innovation und Liebe zum Detail.",
+        "code_card": {
+            "title": "Weitere Projekte",
+            "description": "Die Reise endet hier nicht. Lass uns etwas Großartiges zusammen erschaffen.",
+            "comment": "// Kreativität präsentieren"
+        }
+    },
+    "why_me_full": {
+        "line1": "Warum sich mit",
+        "line2": "Agentur-Overhead zufriedengeben?",
+        "subtitle": "Studio-Qualität mit Freelance-Agilität. Ein Experte. Keine Zwischenhändler.",
+        "features": {
+            "no_bureaucracy": {
+                "title": "Keine Bürokratie",
+                "description": "Keine endlosen Meetings. Arbeite direkt mit einem Experten, der sich um deinen Erfolg kümmert."
+            },
+            "no_delays": {
+                "title": "Keine Verzögerungen",
+                "description": "Erster Prototyp in 48 Stunden. Vollständiger Launch in 7 Tagen. Keine Ausreden."
+            },
+            "no_hidden_costs": {
+                "title": "Keine versteckten Kosten",
+                "description": "Festpreise. Klare Zeitpläne. Was du siehst, ist was du bekommst."
+            },
+            "ai_first": {
+                "title": "KI-First-Ansatz",
+                "description": "Jede Codezeile ist für die nahtlose Integration mit KI-Tools konzipiert."
+            }
+        },
+        "cta": {
+            "button": "Projekt Starten",
+            "note": "Erster Prototyp in 48 Stunden geliefert"
         }
     }
 }

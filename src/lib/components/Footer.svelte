@@ -1,111 +1,214 @@
 <script>
     import { t } from "svelte-i18n";
 
-    let email = "";
-    let subscribed = false;
-
-    function handleSubscribe(e) {
-        e.preventDefault();
-        if (email) {
-            // In production, this would connect to your email service
-            console.log("Newsletter signup:", email);
-            subscribed = true;
-            email = "";
-            setTimeout(() => (subscribed = false), 3000);
-        }
-    }
+    const currentYear = new Date().getFullYear();
 </script>
 
 <footer class="footer">
     <div class="container">
-        <!-- Newsletter Section -->
-        <div class="newsletter-section">
-            <div class="newsletter-content">
-                <h3>Stay Updated</h3>
-                <p>
-                    Get tips on web development, AI automation, and exclusive
-                    offers.
-                </p>
-            </div>
-            <form class="newsletter-form" on:submit={handleSubscribe}>
-                <input
-                    type="email"
-                    bind:value={email}
-                    placeholder="Enter your email"
-                    required
-                    class="email-input"
-                />
-                <button type="submit" class="subscribe-btn">
-                    {#if subscribed}
-                        ✓ Subscribed
-                    {:else}
-                        Subscribe
-                    {/if}
-                </button>
-            </form>
-        </div>
+        <div class="footer-content">
+            <div class="footer-main">
+                <div class="logo-section">
+                    <div class="logo">meriton.selimi.tech/</div>
+                    <p class="tagline">{$t("footer.built_with")}</p>
 
-        <!-- Main Footer Content -->
-        <div class="footer-grid">
-            <!-- Company Info -->
-            <div class="footer-column">
-                <div class="logo">
-                    meriton.selimi.tech<span class="slash">/</span>
+                    <div class="footer-links">
+                        <a href="#pricing">{$t("nav.pricing")}</a>
+                        <a href="#contact">{$t("nav.contact")}</a>
+                        <a href="mailto:meritonmk1@gmail.com">Email</a>
+                    </div>
                 </div>
-                <p class="tagline">{$t("footer.built_with")}</p>
-                <p class="description">
-                    Professional web development and AI automation services.
-                    Fast, reliable, and business-focused.
-                </p>
-            </div>
 
-            <!-- Quick Links -->
-            <div class="footer-column">
-                <h4>Quick Links</h4>
-                <nav class="footer-links">
-                    <a href="#services">{$t("nav.services")}</a>
-                    <a href="#pricing">{$t("nav.pricing")}</a>
-                    <a href="#contact">{$t("nav.contact")}</a>
-                    <a href="#about">About</a>
-                </nav>
-            </div>
+                <div class="right-section">
+                    <div class="social-links">
+                        <a
+                            href="https://www.instagram.com/meriton.selimi.tech/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Instagram"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <rect
+                                    x="2"
+                                    y="2"
+                                    width="20"
+                                    height="20"
+                                    rx="5"
+                                    ry="5"
+                                ></rect>
+                                <path
+                                    d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
+                                ></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"
+                                ></line>
+                            </svg>
+                        </a>
+                    </div>
 
-            <!-- Services -->
-            <div class="footer-column">
-                <h4>Services</h4>
-                <nav class="footer-links">
-                    <a href="#services">Web Development</a>
-                    <a href="#services">AI Integration</a>
-                    <a href="#services">SEO Optimization</a>
-                    <a href="#pricing">Pricing</a>
-                </nav>
-            </div>
+                    <!-- Circuit Board Design -->
+                    <div class="circuit-board">
+                        <svg
+                            viewBox="0 0 200 150"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <!-- Circuit paths -->
+                            <path
+                                class="circuit-line"
+                                d="M 10 20 L 60 20 L 60 50"
+                                stroke="rgba(255,255,255,0.2)"
+                                stroke-width="2"
+                                fill="none"
+                            />
+                            <path
+                                class="circuit-line"
+                                d="M 60 50 L 100 50 L 100 80"
+                                stroke="rgba(255,255,255,0.2)"
+                                stroke-width="2"
+                                fill="none"
+                            />
+                            <path
+                                class="circuit-line"
+                                d="M 100 80 L 150 80"
+                                stroke="rgba(255,255,255,0.2)"
+                                stroke-width="2"
+                                fill="none"
+                            />
+                            <path
+                                class="circuit-line"
+                                d="M 30 100 L 80 100 L 80 70"
+                                stroke="rgba(255,255,255,0.2)"
+                                stroke-width="2"
+                                fill="none"
+                            />
+                            <path
+                                class="circuit-line"
+                                d="M 150 30 L 120 30 L 120 60"
+                                stroke="rgba(255,255,255,0.2)"
+                                stroke-width="2"
+                                fill="none"
+                            />
+                            <path
+                                class="circuit-line"
+                                d="M 180 120 L 140 120 L 140 90"
+                                stroke="rgba(255,255,255,0.2)"
+                                stroke-width="2"
+                                fill="none"
+                            />
 
-            <!-- Contact -->
-            <div class="footer-column">
-                <h4>Get in Touch</h4>
-                <div class="contact-info">
-                    <a href="mailto:meritonmk1@gmail.com" class="contact-link">
-                        meritonmk1@gmail.com
-                    </a>
-                    <p class="location">📍 Based in Germany</p>
-                    <p class="availability">
-                        <span class="status-dot"></span>
-                        Available for new projects
-                    </p>
+                            <!-- Animated glowing lines -->
+                            <path
+                                class="glow-line glow-line-1"
+                                d="M 10 20 L 60 20 L 60 50"
+                                stroke="rgba(255,255,255,0.6)"
+                                stroke-width="2"
+                                fill="none"
+                                stroke-linecap="round"
+                            />
+                            <path
+                                class="glow-line glow-line-2"
+                                d="M 60 50 L 100 50 L 100 80"
+                                stroke="rgba(255,255,255,0.6)"
+                                stroke-width="2"
+                                fill="none"
+                                stroke-linecap="round"
+                            />
+
+                            <!-- Circuit nodes -->
+                            <circle
+                                class="circuit-node"
+                                cx="60"
+                                cy="20"
+                                r="3"
+                                fill="rgba(255,255,255,0.4)"
+                            />
+                            <circle
+                                class="circuit-node pulse-1"
+                                cx="60"
+                                cy="50"
+                                r="4"
+                                fill="rgba(255,255,255,0.6)"
+                            />
+                            <circle
+                                class="circuit-node"
+                                cx="100"
+                                cy="50"
+                                r="3"
+                                fill="rgba(255,255,255,0.4)"
+                            />
+                            <circle
+                                class="circuit-node pulse-2"
+                                cx="100"
+                                cy="80"
+                                r="4"
+                                fill="rgba(255,255,255,0.6)"
+                            />
+                            <circle
+                                class="circuit-node"
+                                cx="120"
+                                cy="30"
+                                r="3"
+                                fill="rgba(255,255,255,0.4)"
+                            />
+                            <circle
+                                class="circuit-node"
+                                cx="80"
+                                cy="100"
+                                r="3"
+                                fill="rgba(255,255,255,0.4)"
+                            />
+
+                            <!-- Chip components -->
+                            <rect
+                                class="chip"
+                                x="95"
+                                y="75"
+                                width="10"
+                                height="10"
+                                fill="none"
+                                stroke="rgba(255,255,255,0.3)"
+                                stroke-width="1"
+                            />
+                            <rect
+                                class="chip"
+                                x="55"
+                                y="45"
+                                width="10"
+                                height="10"
+                                fill="none"
+                                stroke="rgba(255,255,255,0.3)"
+                                stroke-width="1"
+                            />
+                            <rect
+                                class="chip"
+                                x="115"
+                                y="25"
+                                width="10"
+                                height="10"
+                                fill="none"
+                                stroke="rgba(255,255,255,0.3)"
+                                stroke-width="1"
+                            />
+                        </svg>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Bottom Bar -->
-        <div class="footer-bottom">
-            <p class="copyright">{$t("footer.copyright")}</p>
-            <div class="footer-meta">
-                <a href="#privacy">Privacy Policy</a>
-                <span class="separator">•</span>
-                <a href="#terms">Terms of Service</a>
-                <span class="separator">•</span>
-                <a href="#imprint">Imprint</a>
+            <div class="footer-bottom">
+                <p class="copyright">{$t("footer.copyright")}</p>
+                <div class="legal-links">
+                    <a href="/imprint">{$t("footer.links.imprint")}</a>
+                    <a href="/privacy">{$t("footer.links.privacy")}</a>
+                </div>
             </div>
         </div>
     </div>
@@ -113,296 +216,266 @@
 
 <style>
     .footer {
-        background: linear-gradient(to bottom, #000, #0a0a0a);
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        background: #000;
         color: rgba(255, 255, 255, 0.7);
-        padding: 0;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .footer::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 100%;
-        max-width: 1200px;
-        height: 1px;
-        background: linear-gradient(
-            to right,
-            transparent,
-            rgba(255, 255, 255, 0.2),
-            transparent
-        );
+        padding: 4rem 0 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .container {
-        max-width: 1600px;
+        max-width: 1400px;
         margin: 0 auto;
-        padding: 0 4rem;
+        padding: 0 2rem;
     }
 
-    /* Newsletter Section */
-    .newsletter-section {
+    .footer-content {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+    }
+
+    .footer-main {
         display: flex;
         justify-content: space-between;
-        align-items: center;
+        align-items: flex-start;
         gap: 3rem;
-        padding: 4rem 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        flex-wrap: wrap;
     }
 
-    .newsletter-content h3 {
-        font-size: 1.75rem;
-        font-weight: 700;
-        color: #fff;
-        margin-bottom: 0.5rem;
-    }
-
-    .newsletter-content p {
-        color: rgba(255, 255, 255, 0.6);
-        font-size: 0.95rem;
-        margin: 0;
-    }
-
-    .newsletter-form {
-        display: flex;
-        gap: 1rem;
-        min-width: 400px;
-    }
-
-    .email-input {
+    .logo-section {
         flex: 1;
-        padding: 0.875rem 1.25rem;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 6px;
-        color: #fff;
-        font-size: 0.95rem;
-        transition: all 0.2s ease;
-    }
-
-    .email-input:focus {
-        outline: none;
-        border-color: #fff;
-        background: rgba(255, 255, 255, 0.08);
-    }
-
-    .email-input::placeholder {
-        color: rgba(255, 255, 255, 0.4);
-    }
-
-    .subscribe-btn {
-        padding: 0.875rem 2rem;
-        background: #fff;
-        color: #000;
-        border: none;
-        border-radius: 6px;
-        font-weight: 600;
-        font-size: 0.95rem;
-        cursor: pointer;
-        transition: all 0.2s ease;
-        white-space: nowrap;
-    }
-
-    .subscribe-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
-    }
-
-    /* Footer Grid */
-    .footer-grid {
-        display: grid;
-        grid-template-columns: 2fr 1fr 1fr 1.5fr;
-        gap: 4rem;
-        padding: 4rem 0;
-    }
-
-    .footer-column h4 {
-        font-size: 1rem;
-        font-weight: 600;
-        color: #fff;
-        margin-bottom: 1.25rem;
-        letter-spacing: 0.5px;
-        text-transform: uppercase;
-        font-size: 0.85rem;
+        min-width: 250px;
     }
 
     .logo {
-        font-family: "Courier New", monospace;
-        font-size: 1.15rem;
-        font-weight: 400;
+        font-family: "Fira Code", monospace;
+        font-size: 1.1rem;
+        font-weight: 600;
         color: #fff;
-        letter-spacing: 0.05em;
         margin-bottom: 0.75rem;
-    }
-
-    .slash {
-        color: rgba(255, 255, 255, 0.4);
+        letter-spacing: -0.02em;
     }
 
     .tagline {
         font-size: 0.9rem;
         color: rgba(255, 255, 255, 0.5);
-        margin: 0 0 1rem 0;
-    }
-
-    .description {
-        font-size: 0.9rem;
-        line-height: 1.6;
-        color: rgba(255, 255, 255, 0.6);
-        margin: 0;
+        font-family: "Inter", sans-serif;
+        margin-bottom: 1.5rem;
     }
 
     .footer-links {
         display: flex;
         flex-direction: column;
-        gap: 0.875rem;
+        gap: 1rem;
+        align-items: flex-start;
     }
 
     .footer-links a {
+        color: rgba(255, 255, 255, 0.7);
         font-size: 0.95rem;
-        color: rgba(255, 255, 255, 0.6);
+        font-weight: 500;
         transition: color 0.2s ease;
-        text-decoration: none;
+        font-family: "Inter", sans-serif;
+        position: relative;
+    }
+
+    .footer-links a::after {
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background: #fff;
+        transition: width 0.3s ease;
     }
 
     .footer-links a:hover {
         color: #fff;
+        opacity: 1;
     }
 
-    /* Contact Info */
-    .contact-info {
+    .footer-links a:hover::after {
+        width: 100%;
+    }
+
+    .right-section {
         display: flex;
         flex-direction: column;
-        gap: 0.75rem;
+        gap: 2rem;
+        align-items: flex-end;
     }
 
-    .contact-link {
-        color: rgba(255, 255, 255, 0.8);
-        text-decoration: none;
-        font-size: 0.95rem;
-        transition: color 0.2s ease;
+    .social-links {
+        display: flex;
+        gap: 1.5rem;
+        align-items: flex-start;
     }
 
-    .contact-link:hover {
-        color: #fff;
-    }
-
-    .location {
-        font-size: 0.9rem;
-        color: rgba(255, 255, 255, 0.6);
-        margin: 0;
-    }
-
-    .availability {
+    .social-links a {
+        color: rgba(255, 255, 255, 0.7);
+        transition: all 0.3s ease;
         display: flex;
         align-items: center;
-        gap: 0.5rem;
-        font-size: 0.9rem;
-        color: rgba(255, 255, 255, 0.7);
-        margin: 0;
-    }
-
-    .status-dot {
-        width: 8px;
-        height: 8px;
-        background: #4ade80;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
         border-radius: 50%;
-        animation: pulse 2s ease-in-out infinite;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    @keyframes pulse {
+    .social-links a:hover {
+        color: #fff;
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.3);
+        transform: translateY(-2px);
+    }
+
+    .social-links svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    /* Circuit Board Styles */
+    .circuit-board {
+        width: 200px;
+        height: 150px;
+        opacity: 0.6;
+    }
+
+    .circuit-board svg {
+        width: 100%;
+        height: 100%;
+    }
+
+    .glow-line {
+        stroke-dasharray: 100;
+        stroke-dashoffset: 100;
+        animation: draw-line 3s ease-in-out infinite;
+    }
+
+    .glow-line-1 {
+        animation-delay: 0s;
+    }
+
+    .glow-line-2 {
+        animation-delay: 1.5s;
+    }
+
+    @keyframes draw-line {
         0%,
         100% {
-            opacity: 1;
+            stroke-dashoffset: 100;
+            opacity: 0;
         }
         50% {
-            opacity: 0.5;
+            stroke-dashoffset: 0;
+            opacity: 1;
         }
     }
 
-    /* Bottom Bar */
+    .pulse-1,
+    .pulse-2 {
+        animation: pulse-node 2s ease-in-out infinite;
+    }
+
+    .pulse-2 {
+        animation-delay: 1s;
+    }
+
+    @keyframes pulse-node {
+        0%,
+        100% {
+            opacity: 0.4;
+            r: 3;
+        }
+        50% {
+            opacity: 1;
+            r: 5;
+        }
+    }
+
+    .chip {
+        animation: chip-glow 3s ease-in-out infinite;
+    }
+
+    @keyframes chip-glow {
+        0%,
+        100% {
+            stroke: rgba(255, 255, 255, 0.2);
+        }
+        50% {
+            stroke: rgba(255, 255, 255, 0.6);
+        }
+    }
+
     .footer-bottom {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 2rem 0;
+        padding-top: 2rem;
         border-top: 1px solid rgba(255, 255, 255, 0.05);
+        gap: 2rem;
+        flex-wrap: wrap;
     }
 
     .copyright {
         font-size: 0.85rem;
-        color: rgba(255, 255, 255, 0.4);
+        color: rgba(255, 255, 255, 0.5);
         margin: 0;
+        font-family: "Inter", sans-serif;
     }
 
-    .footer-meta {
+    .legal-links {
         display: flex;
-        align-items: center;
-        gap: 1rem;
+        gap: 2rem;
     }
 
-    .footer-meta a {
+    .legal-links a {
         font-size: 0.85rem;
         color: rgba(255, 255, 255, 0.5);
-        text-decoration: none;
         transition: color 0.2s ease;
+        font-family: "Inter", sans-serif;
     }
 
-    .footer-meta a:hover {
-        color: #fff;
-    }
-
-    .separator {
-        color: rgba(255, 255, 255, 0.3);
-        font-size: 0.85rem;
-    }
-
-    /* Responsive */
-    @media (max-width: 1024px) {
-        .footer-grid {
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-        }
-
-        .newsletter-form {
-            min-width: 350px;
-        }
+    .legal-links a:hover {
+        color: rgba(255, 255, 255, 0.8);
+        opacity: 1;
     }
 
     @media (max-width: 768px) {
-        .container {
-            padding: 0 2rem;
+        .footer {
+            padding: 3rem 0 1.5rem;
         }
 
-        .newsletter-section {
+        .footer-main {
             flex-direction: column;
+            gap: 2rem;
+        }
+
+        .right-section {
             align-items: flex-start;
-            padding: 3rem 0;
         }
 
-        .newsletter-form {
-            min-width: 100%;
-            flex-direction: column;
+        .circuit-board {
+            width: 150px;
+            height: 112px;
         }
 
-        .footer-grid {
-            grid-template-columns: 1fr;
-            gap: 2.5rem;
+        .footer-links {
+            gap: 1.25rem;
         }
 
         .footer-bottom {
             flex-direction: column;
-            gap: 1rem;
-            text-align: center;
+            align-items: flex-start;
+            gap: 1.5rem;
         }
 
-        .footer-meta {
-            flex-wrap: wrap;
-            justify-content: center;
+        .legal-links {
+            flex-direction: column;
+            gap: 1rem;
         }
     }
 </style>

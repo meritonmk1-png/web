@@ -19,39 +19,40 @@
         return () => observer.disconnect();
     });
 
-    const features = [
+    // We need to use a reactive statement to update features when language changes
+    $: features = [
         {
             id: "delivery",
             title: "fast_delivery",
-            desc: "// Days instead of weeks",
+            desc: $t("problem_solution.features.fast_delivery"),
             val: '"7_days"',
             color: "#a5f3fc", // cyan
         },
         {
             id: "perf",
             title: "optimize_perf",
-            desc: "// Clean code, instant load",
+            desc: $t("problem_solution.features.optimize_perf"),
             val: "true",
             color: "#fde047", // yellow
         },
         {
             id: "ux",
             title: "clear_structure",
-            desc: "// UX that converts",
+            desc: $t("problem_solution.features.clear_structure"),
             val: "100%",
             color: "#f9a8d4", // pink
         },
         {
             id: "ai",
             title: "ai_capabilities",
-            desc: "// Chatbots & automation",
+            desc: $t("problem_solution.features.ai_capabilities"),
             val: "enabled",
             color: "#86efac", // green
         },
         {
             id: "price",
             title: "transparent_pricing",
-            desc: "// No hidden fees",
+            desc: $t("problem_solution.features.transparent_pricing"),
             val: "0",
             color: "#c4b5fd", // purple
         },
@@ -67,8 +68,10 @@
                 <span class="comment"
                     >&lt;!-- {$t("differentiators.headline")} --&gt;</span
                 ><br />
-                Designed for Speed.<br />
-                <span class="highlight">Engineered for Results.</span>
+                {$t("problem_solution.headline_1")}<br />
+                <span class="highlight"
+                    >{$t("problem_solution.headline_2")}</span
+                >
             </h2>
             <p class="lead">
                 {$t("value_prop.body")}
@@ -123,7 +126,7 @@
             <div class="outcome-content">
                 <span class="keyword">return</span>
                 <span class="string"
-                    >"A website that works for your business"</span
+                    >"{$t("problem_solution.return_statement")}"</span
                 >;
             </div>
         </div>

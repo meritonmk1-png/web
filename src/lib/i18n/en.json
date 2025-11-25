@@ -145,5 +145,65 @@
             "privacy": "Privacy Policy",
             "contact": "Contact"
         }
+    },
+    "problem_solution": {
+        "headline_1": "Designed for Speed.",
+        "headline_2": "Engineered for Results.",
+        "return_statement": "A website that works for your business",
+        "features": {
+            "fast_delivery": "// Days instead of weeks",
+            "optimize_perf": "// Clean code, instant load",
+            "clear_structure": "// UX that converts",
+            "ai_capabilities": "// Chatbots & automation",
+            "transparent_pricing": "// No hidden fees"
+        }
+    },
+    "why_me_code": {
+        "comment": "// A Direct Partner — Not a Large Agency",
+        "focus_val": "\"business_value\"",
+        "benefits": {
+            "one_point_of_contact": "one_point_of_contact",
+            "fast_responses": "fast_responses",
+            "no_upselling": "no_upselling",
+            "clear_communication": "clear_communication",
+            "no_bureaucracy": "no_bureaucracy"
+        }
+    },
+    "portfolio": {
+        "badge": "Portfolio",
+        "headline": "Selected Works",
+        "description": "Crafting digital experiences that blend aesthetics with functionality. Each project is a testament to innovation and attention to detail.",
+        "code_card": {
+            "title": "More Projects",
+            "description": "The journey doesn't end here. Let's create something amazing together.",
+            "comment": "// Showcasing creativity"
+        }
+    },
+    "why_me_full": {
+        "line1": "Why settle for",
+        "line2": "agency overhead?",
+        "subtitle": "Get studio-quality development with freelance agility. One expert. Zero middlemen.",
+        "features": {
+            "no_bureaucracy": {
+                "title": "No Bureaucracy",
+                "description": "Skip the endless meetings. Work directly with one expert who cares about your success."
+            },
+            "no_delays": {
+                "title": "No Delays",
+                "description": "First prototype in 48 hours. Full launch in 7 days. Zero excuses."
+            },
+            "no_hidden_costs": {
+                "title": "No Hidden Costs",
+                "description": "Fixed pricing. Clear timelines. What you see is what you get."
+            },
+            "ai_first": {
+                "title": "AI-First Approach",
+                "description": "Every line of code designed to integrate seamlessly with AI tools."
+            }
+        },
+        "cta": {
+            "button": "Start Your Project",
+            "note": "First prototype delivered in 48 hours"
+        }
     }
 }

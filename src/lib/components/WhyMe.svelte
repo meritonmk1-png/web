@@ -1,354 +1,595 @@
 <script>
     import { onMount } from "svelte";
+    import { t } from "svelte-i18n";
 
     let sectionRef;
     let visible = false;
-    let scrollY = 0;
     let mouseX = 0;
     let mouseY = 0;
+    let cardRefs = [];
+
+    // Reveal elements on scroll
+    let revealStates = {
+        text1: false,
+        text2: false,
+        text3: false,
+        cards: false,
+        cta: false,
+    };
+
+    const features = [
+        {
+            key: "no_bureaucracy",
+            delay: 0,
+        },
+        {
+            key: "no_delays",
+            delay: 0.1,
+        },
+        {
+            key: "no_hidden_costs",
+            delay: 0.2,
+        },
+        {
+            key: "ai_first",
+            delay: 0.3,
+        },
+    ];
 
     onMount(() => {
         const observer = new IntersectionObserver(
             (entries) => {
                 if (entries[0].isIntersecting) {
                     visible = true;
+
+                    // Staggered reveal animation
+                    setTimeout(() => (revealStates.text1 = true), 200);
+                    setTimeout(() => (revealStates.text2 = true), 500);
+                    setTimeout(() => (revealStates.text3 = true), 800);
+                    setTimeout(() => (revealStates.cards = true), 1100);
+                    setTimeout(() => (revealStates.cta = true), 1600);
                 }
             },
-            { threshold: 0.2 },
+            { threshold: 0.15 },
         );
 
         if (sectionRef) observer.observe(sectionRef);
 
-        const handleScroll = () => {
-            scrollY = window.scrollY;
-        };
-
+        // Mouse parallax effect
         let frameId;
         const handleMouseMove = (e) => {
             if (frameId) return;
 
             frameId = requestAnimationFrame(() => {
-                // Normalize mouse position from -1 to 1
                 const x = (e.clientX / window.innerWidth - 0.5) * 2;
                 const y = (e.clientY / window.innerHeight - 0.5) * 2;
-                mouseX = x * 20;
-                mouseY = y * 20;
+                mouseX = x * 30;
+                mouseY = y * 30;
                 frameId = null;
             });
         };
 
-        window.addEventListener("scroll", handleScroll);
         window.addEventListener("mousemove", handleMouseMove);
 
         return () => {
             observer.disconnect();
-            window.removeEventListener("scroll", handleScroll);
             window.removeEventListener("mousemove", handleMouseMove);
             if (frameId) cancelAnimationFrame(frameId);
         };
     });
-
-    const benefits = [
-        { text: "one_point_of_contact", x: 15, y: 20, speed: 0.05, delay: 0 },
-        { text: "fast_responses", x: 75, y: 15, speed: -0.08, delay: 100 },
-        { text: "no_upselling", x: 10, y: 60, speed: 0.06, delay: 200 },
-        { text: "clear_communication", x: 80, y: 55, speed: -0.05, delay: 300 },
-        { text: "no_bureaucracy", x: 50, y: 85, speed: 0.08, delay: 400 },
-    ];
 </script>
 
 <section class="section" bind:this={sectionRef}>
-    <!-- Top Connector -->
-    <div class="seam-connector">
-        <div class="line"></div>
+    <!-- Animated Gradient Background -->
+    <div class="gradient-bg">
+        <div
+            class="gradient-orb orb-1"
+            style="transform: translate({mouseX * -0.5}px, {mouseY * -0.5}px)"
+        ></div>
+        <div
+            class="gradient-orb orb-2"
+            style="transform: translate({mouseX * 0.8}px, {mouseY * 0.8}px)"
+        ></div>
+        <div
+            class="gradient-orb orb-3"
+            style="transform: translate({mouseX * -0.3}px, {mouseY * -0.3}px)"
+        ></div>
     </div>
 
-    <!-- Live Background Orbs -->
-    <div class="orbs">
-        <div
-            class="orb orb-1"
-            style="transform: translate({mouseX * -1}px, {mouseY * -1}px)"
-        ></div>
-        <div
-            class="orb orb-2"
-            style="transform: translate({mouseX * 1.5}px, {mouseY * 1.5}px)"
-        ></div>
-    </div>
+    <!-- Grid overlay -->
+    <div class="grid-overlay"></div>
 
     <div class="container">
-        <div class="content" class:visible>
-            <h2>
-                <span class="keyword">class</span> WhyMe
-                <span class="keyword">extends</span>
-                Partner <span class="brace">&lbrace;</span>
-            </h2>
-            <h3 class="comment">// A Direct Partner — Not a Large Agency</h3>
-            <div class="code-block">
-                <span class="keyword">constructor</span>()
-                <span class="brace">&lbrace;</span><br />
-                &nbsp;&nbsp;<span class="this">this</span>.focus =
-                <span class="string">"business_value"</span>;<br />
-                &nbsp;&nbsp;<span class="this">this</span>.complexity =
-                <span class="val">null</span>;<br />
-                <span class="brace">&rbrace;</span>
+        <!-- Reveal Text -->
+        <div class="reveal-content">
+            <div class="reveal-line" class:visible={revealStates.text1}>
+                <h2>{$t("why_me_full.line1")}</h2>
+            </div>
+            <div class="reveal-line" class:visible={revealStates.text2}>
+                <h2 class="highlight">{$t("why_me_full.line2")}</h2>
+            </div>
+            <div class="reveal-line" class:visible={revealStates.text3}>
+                <p class="subtitle">
+                    {$t("why_me_full.subtitle")}
+                </p>
             </div>
         </div>
 
-        <div class="gravity-field">
-            {#each benefits as item}
+        <!-- Feature Cards with 3D Effect -->
+        <div class="cards-grid" class:visible={revealStates.cards}>
+            {#each features as feature, i}
                 <div
-                    class="floater"
-                    class:visible
-                    style="
-                        left: {item.x}%;
-                        top: {item.y}%;
-                        transform: translateY({(scrollY * item.speed) % 60}px);
-                        transition-delay: {item.delay}ms;
-                    "
+                    class="feature-card"
+                    style="--delay: {feature.delay}s"
+                    bind:this={cardRefs[i]}
                 >
-                    <div class="dot-indicator"></div>
-                    <span class="var-name">{item.text}</span>
-                    <span class="val">: true</span>
+                    <div class="card-shine"></div>
+                    <div class="card-content">
+                        <h3>
+                            {$t(`why_me_full.features.${feature.key}.title`)}
+                        </h3>
+                        <p>
+                            {$t(
+                                `why_me_full.features.${feature.key}.description`,
+                            )}
+                        </p>
+                    </div>
+                    <div class="card-border"></div>
                 </div>
             {/each}
+        </div>
+
+        <!-- CTA with Magnetic Effect -->
+        <div class="cta-container" class:visible={revealStates.cta}>
+            <div class="cta-glow"></div>
+            <a href="#contact" class="cta-button">
+                <span class="cta-text">{$t("why_me_full.cta.button")}</span>
+                <span class="cta-arrow">→</span>
+                <div class="cta-ripple"></div>
+            </a>
+            <p class="cta-note">{$t("why_me_full.cta.note")}</p>
         </div>
     </div>
 </section>
 
 <style>
     .section {
-        padding-top: 0; /* Connects to previous section */
-        padding-bottom: 10rem;
-        background: #050505;
         position: relative;
+        padding: 10rem 0;
+        background: #000;
         overflow: hidden;
         color: #fff;
-        min-height: 80vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        font-family: "Fira Code", monospace; /* Code font for this section */
     }
 
-    /* Seam Connector */
-    .seam-connector {
-        height: 60px;
-        display: flex;
-        justify-content: center;
-        margin-bottom: 2rem;
-        opacity: 0.6;
-    }
-
-    .seam-connector .line {
-        width: 1px;
-        height: 100%;
-        background: linear-gradient(
-            to bottom,
-            rgba(255, 255, 255, 0.3),
-            rgba(255, 255, 255, 0.1)
-        );
-    }
-
-    /* Background Orbs - Optimized */
-    .orbs {
+    /* Animated Gradient Background */
+    .gradient-bg {
         position: absolute;
         inset: 0;
-        pointer-events: none;
-        overflow: hidden;
+        opacity: 0.4;
         z-index: 0;
-        transform: translateZ(0); /* Force hardware acceleration */
     }
 
-    .orb {
+    .gradient-orb {
         position: absolute;
         border-radius: 50%;
-        filter: blur(40px); /* Reduced blur */
-        opacity: 0.15;
-        will-change: transform;
-        transition: transform 0.1s linear;
+        filter: blur(120px);
+        animation: morphing 20s ease-in-out infinite;
+        transition: transform 0.5s ease-out;
     }
 
     .orb-1 {
-        width: 400px;
-        height: 400px;
+        width: 600px;
+        height: 600px;
         background: radial-gradient(
             circle,
-            rgba(255, 255, 255, 0.3) 0%,
+            rgba(139, 92, 246, 0.6) 0%,
             transparent 70%
         );
-        top: -20%;
+        top: -10%;
         left: -10%;
+        animation-delay: 0s;
     }
 
     .orb-2 {
-        width: 350px;
-        height: 350px;
+        width: 700px;
+        height: 700px;
         background: radial-gradient(
             circle,
-            rgba(100, 100, 255, 0.2) 0%,
+            rgba(236, 72, 153, 0.5) 0%,
             transparent 70%
         );
-        bottom: -10%;
-        right: -5%;
+        bottom: -15%;
+        right: -15%;
+        animation-delay: 7s;
+    }
+
+    .orb-3 {
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(
+            circle,
+            rgba(59, 130, 246, 0.5) 0%,
+            transparent 70%
+        );
+        top: 40%;
+        right: 20%;
+        animation-delay: 14s;
+    }
+
+    @keyframes morphing {
+        0%,
+        100% {
+            transform: scale(1) rotate(0deg);
+            border-radius: 50%;
+        }
+        33% {
+            transform: scale(1.1) rotate(120deg);
+            border-radius: 40% 60% 50% 50%;
+        }
+        66% {
+            transform: scale(0.9) rotate(240deg);
+            border-radius: 60% 40% 60% 40%;
+        }
+    }
+
+    .grid-overlay {
+        position: absolute;
+        inset: 0;
+        background-image: linear-gradient(
+                rgba(255, 255, 255, 0.03) 1px,
+                transparent 1px
+            ),
+            linear-gradient(
+                90deg,
+                rgba(255, 255, 255, 0.03) 1px,
+                transparent 1px
+            );
+        background-size: 60px 60px;
+        mask-image: radial-gradient(
+            circle at center,
+            black 30%,
+            transparent 80%
+        );
+        pointer-events: none;
+        z-index: 1;
     }
 
     .container {
-        max-width: 1200px;
+        max-width: 1300px;
         margin: 0 auto;
         padding: 0 2rem;
         position: relative;
-        width: 100%;
-        height: 600px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
         z-index: 2;
     }
 
-    .content {
+    /* Reveal Content */
+    .reveal-content {
         text-align: center;
-        max-width: 800px;
-        z-index: 10;
+        margin-bottom: 5rem;
+        overflow: hidden;
+    }
+
+    .reveal-line {
+        opacity: 0;
+        transform: translateY(100px) rotateX(-20deg);
+        transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        perspective: 1000px;
+    }
+
+    .reveal-line.visible {
+        opacity: 1;
+        transform: translateY(0) rotateX(0deg);
+    }
+
+    h2 {
+        font-family: "Outfit", sans-serif;
+        font-size: clamp(3rem, 7vw, 6rem);
+        font-weight: 900;
+        line-height: 1.1;
+        margin-bottom: 0.5rem;
+        letter-spacing: -0.04em;
+    }
+
+    .highlight {
+        background: linear-gradient(
+            135deg,
+            #ec4899 0%,
+            #8b5cf6 50%,
+            #3b82f6 100%
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: gradient-shift 3s ease infinite;
+        background-size: 200% 200%;
+    }
+
+    @keyframes gradient-shift {
+        0%,
+        100% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+    }
+
+    .subtitle {
+        font-family: "Inter", sans-serif;
+        font-size: clamp(1.1rem, 2vw, 1.4rem);
+        color: rgba(255, 255, 255, 0.7);
+        max-width: 700px;
+        margin: 2rem auto 0;
+        line-height: 1.6;
+    }
+
+    /* Cards Grid */
+    .cards-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 5rem;
+        opacity: 0;
+        transform: translateY(40px);
+        transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .cards-grid.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .feature-card {
+        position: relative;
+        padding: 2.5rem;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 24px;
+        overflow: hidden;
+        transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        animation: fadeInUp 0.8s ease-out forwards;
+        animation-delay: calc(var(--delay));
+        opacity: 0;
+        backdrop-filter: blur(10px);
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px) scale(0.95);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+
+    .feature-card:hover {
+        transform: translateY(-12px) scale(1.02);
+        background: rgba(255, 255, 255, 0.05);
+    }
+
+    .feature-card:hover .card-shine {
+        opacity: 1;
+        transform: translateX(100%);
+    }
+
+    .card-shine {
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.1),
+            transparent
+        );
+        opacity: 0;
+        transition: all 0.6s ease;
+        pointer-events: none;
+    }
+
+    .card-content {
+        position: relative;
+        z-index: 1;
+    }
+
+    .feature-card h3 {
+        font-family: "Outfit", sans-serif;
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        background: linear-gradient(
+            135deg,
+            #fff 0%,
+            rgba(255, 255, 255, 0.7) 100%
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .feature-card p {
+        font-family: "Inter", sans-serif;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: rgba(255, 255, 255, 0.65);
+        margin: 0;
+    }
+
+    .card-border {
+        position: absolute;
+        inset: 0;
+        border-radius: 24px;
+        padding: 1px;
+        background: linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.1) 0%,
+            rgba(255, 255, 255, 0.05) 100%
+        );
+        -webkit-mask:
+            linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask:
+            linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+        mask-composite: exclude;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+    }
+
+    .feature-card:hover .card-border {
+        opacity: 1;
+    }
+
+    /* CTA with Magnetic Effect */
+    .cta-container {
+        text-align: center;
+        position: relative;
         opacity: 0;
         transform: scale(0.9);
         transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .content.visible {
+    .cta-container.visible {
         opacity: 1;
         transform: scale(1);
     }
 
-    h2 {
-        font-size: clamp(1.5rem, 4vw, 2.5rem);
-        font-weight: 700;
-        margin-bottom: 0.5rem;
-        color: #e5c07b; /* Gold/Yellow for class name */
-    }
-
-    .keyword {
-        color: #c678dd;
-    } /* Purple */
-    .brace {
-        color: #abb2bf;
-    }
-    .this {
-        color: #e06c75;
-    } /* Red */
-    .string {
-        color: #98c379;
-    } /* Green */
-    .val {
-        color: #d19a66;
-    } /* Orange */
-
-    h3.comment {
-        font-size: 1.1rem;
-        color: #5c6370;
-        margin-bottom: 2rem;
-        font-weight: 400;
-        font-style: italic;
-    }
-
-    .code-block {
-        text-align: left;
-        display: inline-block;
-        background: rgba(0, 0, 0, 0.3);
-        padding: 1.5rem;
-        border-radius: 8px;
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        font-size: 1rem;
-        line-height: 1.6;
-        color: #abb2bf;
-    }
-
-    .gravity-field {
+    .cta-glow {
         position: absolute;
-        inset: 0;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(
+            circle,
+            rgba(139, 92, 246, 0.3) 0%,
+            transparent 70%
+        );
+        filter: blur(60px);
+        animation: pulse 3s ease-in-out infinite;
         pointer-events: none;
     }
 
-    .floater {
-        position: absolute;
-        display: flex;
-        align-items: center;
-        gap: 0.8rem;
-        padding: 0.8rem 1.2rem;
-        background: rgba(15, 15, 15, 0.8);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 8px; /* More code-like, less rounded */
-        backdrop-filter: blur(10px);
-        opacity: 0;
-        transition:
-            opacity 0.8s ease,
-            transform 0.1s linear;
-        white-space: nowrap;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    }
-
-    .floater.visible {
-        opacity: 1;
-        animation: float 6s ease-in-out infinite;
-    }
-
-    .dot-indicator {
-        width: 6px;
-        height: 6px;
-        background: #61afef; /* Blue */
-        border-radius: 50%;
-        box-shadow: 0 0 10px rgba(97, 175, 239, 0.5);
-    }
-
-    .var-name {
-        font-size: 0.9rem;
-        color: #e06c75; /* Red variable color */
-    }
-
-    .floater .val {
-        font-size: 0.9rem;
-        color: #d19a66; /* Orange boolean/value */
-    }
-
-    @keyframes float {
+    @keyframes pulse {
         0%,
         100% {
-            transform: translateY(0);
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 0.5;
         }
         50% {
-            transform: translateY(-10px);
+            transform: translate(-50%, -50%) scale(1.1);
+            opacity: 0.8;
         }
+    }
+
+    .cta-button {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1.5rem 3.5rem;
+        font-size: 1.15rem;
+        font-weight: 700;
+        font-family: "Outfit", sans-serif;
+        background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+        color: #fff;
+        border-radius: 60px;
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(139, 92, 246, 0.4);
+    }
+
+    .cta-button:hover {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 30px 80px rgba(139, 92, 246, 0.6);
+        opacity: 1;
+    }
+
+    .cta-button:active {
+        transform: translateY(-2px) scale(1.02);
+    }
+
+    .cta-arrow {
+        font-size: 1.3rem;
+        transition: transform 0.4s ease;
+    }
+
+    .cta-button:hover .cta-arrow {
+        transform: translateX(8px);
+    }
+
+    .cta-ripple {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+            circle,
+            rgba(255, 255, 255, 0.3) 0%,
+            transparent 70%
+        );
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+
+    .cta-button:hover .cta-ripple {
+        opacity: 1;
+        animation: ripple 1.5s ease-out infinite;
+    }
+
+    @keyframes ripple {
+        0% {
+            transform: scale(0.8);
+            opacity: 1;
+        }
+        100% {
+            transform: scale(1.2);
+            opacity: 0;
+        }
+    }
+
+    .cta-note {
+        margin-top: 1.5rem;
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.5);
+        font-family: "Inter", sans-serif;
+        font-style: italic;
     }
 
     @media (max-width: 768px) {
         .section {
-            padding-bottom: 6rem;
-            min-height: auto;
+            padding: 6rem 0;
         }
 
-        .container {
-            height: auto;
-            flex-direction: column;
-            gap: 3rem;
+        .reveal-content {
+            margin-bottom: 3rem;
         }
 
-        .gravity-field {
-            position: relative;
-            height: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            inset: auto;
-            width: 100%;
+        h2 {
+            font-size: clamp(2.5rem, 10vw, 4rem);
         }
 
-        .floater {
-            position: relative;
-            left: auto !important;
-            top: auto !important;
-            transform: none !important;
-            width: 100%;
-            justify-content: center;
-            animation: none;
+        .cards-grid {
+            grid-template-columns: 1fr;
+            gap: 1.25rem;
+            margin-bottom: 3rem;
+        }
+
+        .feature-card {
+            padding: 2rem;
+        }
+
+        .cta-button {
+            padding: 1.25rem 2.5rem;
+            font-size: 1rem;
+        }
+
+        .gradient-orb {
+            filter: blur(80px);
         }
     }
 </style>
