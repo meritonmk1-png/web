@@ -71,7 +71,7 @@
                     <div class="delivery">
                         {$t(`pricing.${plan.id}.delivery`)}
                     </div>
-                    <a href="#contact" class="cta-btn">
+                    <a href="/start" class="cta-btn">
                         {$t("nav.start_project")}
                     </a>
                 </div>

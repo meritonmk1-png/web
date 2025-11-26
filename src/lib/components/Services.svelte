@@ -51,7 +51,7 @@
                     {/each}
                 </ul>
 
-                <a href="#contact" class="btn">
+                <a href="/start" class="btn">
                     <span>{$t("nav.start_project")}</span>
                     <div class="arrow">→</div>
                 </a>
@@ -73,7 +73,7 @@
                     {/each}
                 </ul>
 
-                <a href="#contact" class="btn primary">
+                <a href="/start" class="btn primary">
                     <span>{$t("nav.start_project")}</span>
                     <div class="arrow">→</div>
                 </a>
@@ -94,7 +94,7 @@
                     {/each}
                 </ul>
 
-                <a href="#contact" class="btn">
+                <a href="/start" class="btn">
                     <span>{$t("nav.start_project")}</span>
                     <div class="arrow">→</div>
                 </a>
@@ -262,20 +262,6 @@
         color: #fff;
         margin-bottom: 0.5rem;
         letter-spacing: -0.02em;
-    }
-
-    .price1 {
-        font-size: 2rem;
-        color: beige;
-    }
-
-    .period {
-        font-size: 1.5rem;
-        color: rgba(255, 255, 255, 0.5);
-    }
-
-    .period1 {
-        font-size: 0.9rem;
     }
 
     .timeline {

@@ -48,6 +48,7 @@
             <a href="#contact" on:click={(e) => scrollToSection(e, "#contact")}
                 >{$t("nav.contact")}</a
             >
+            <a href="/blog">{$t("nav.blog")}</a>
 
             <div class="language-switcher">
                 <button
@@ -62,13 +63,6 @@
                 >
             </div>
         </div>
-
-        <a
-            href="#contact"
-            class="cta-btn"
-            on:click={(e) => scrollToSection(e, "#contact")}
-            >{$t("nav.start_project")}</a
-        >
 
         <button
             class="mobile-toggle"
@@ -216,24 +210,6 @@
         color: #fff;
     }
 
-    .cta-btn {
-        padding: 0.75rem 1.75rem;
-        background: #fff;
-        color: #000;
-        border-radius: 8px;
-        font-size: 0.95rem;
-        font-weight: 600;
-        transition: all 0.3s ease;
-        flex-shrink: 0;
-        white-space: nowrap;
-    }
-
-    .cta-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
-        opacity: 1;
-    }
-
     .mobile-toggle {
         display: none;
     }
@@ -304,10 +280,6 @@
             background: #fff;
             transition: all 0.3s ease;
             border-radius: 2px;
-        }
-
-        .cta-btn {
-            display: none;
         }
     }
 

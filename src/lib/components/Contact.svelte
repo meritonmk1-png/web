@@ -37,7 +37,7 @@
             </p>
 
             <div class="cta-wrapper">
-                <a href="mailto:meritonmk1@gmail.com" class="cta-button">
+                <a href="/start" class="cta-button">
                     <span class="shimmer"></span>
                     <span class="text">{$t("nav.start_project")}</span>
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none">

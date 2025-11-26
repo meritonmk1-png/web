@@ -86,7 +86,7 @@
         </p>
 
         <div class="cta-group" class:visible={revealStates.cta}>
-            <a href="#contact" class="btn-primary">
+            <a href="/start" class="btn-primary">
                 <span>{$t("hero.cta_primary")}</span>
                 <div class="arrow">→</div>
                 <div class="btn-shine"></div>

@@ -142,7 +142,7 @@
         <!-- CTA with Magnetic Effect -->
         <div class="cta-container" class:visible={revealStates.cta}>
             <div class="cta-glow"></div>
-            <a href="#contact" class="cta-button">
+            <a href="/start" class="cta-button">
                 <span class="cta-text">{$t("why_me_full.cta.button")}</span>
                 <span class="cta-arrow">→</span>
                 <div class="cta-ripple"></div>

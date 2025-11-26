@@ -4,7 +4,8 @@
         "pricing": "Pricing",
         "ai_pilot": "AI Pilot",
         "contact": "Contact",
-        "start_project": "Start Project"
+        "start_project": "Start Project",
+        "blog": "Blog"
     },
     "hero": {
         "headline": "AI-Driven Websites. Built for Speed. Engineered for Growth.",
@@ -205,5 +206,64 @@
             "button": "Start Your Project",
             "note": "First prototype delivered in 48 hours"
         }
+    },
+    "funnel": {
+        "step1": {
+            "title": "Let's start with the basics.",
+            "subtitle": "Who should I address this proposal to?",
+            "name_label": "Your Name",
+            "email_label": "Your Email"
+        },
+        "step2": {
+            "title": "What are we building?",
+            "subtitle": "Select all that apply to your project.",
+            "budget_title": "What's your budget?",
+            "services": {
+                "web_design": "Web Design",
+                "development": "Development",
+                "seo": "SEO Optimization",
+                "ecommerce": "E-Commerce",
+                "branding": "Branding",
+                "other": "Other"
+            },
+            "budgets": {
+                "small": "< $1k",
+                "medium": "$1k - $5k",
+                "large": "$5k - $10k",
+                "enterprise": "$10k+"
+            }
+        },
+        "step3": {
+            "title": "Tell me more.",
+            "subtitle": "Describe your vision, goals, or any specific requirements.",
+            "placeholder": "I need a website that..."
+        },
+        "step4": {
+            "title": "Review & Send",
+            "subtitle": "Does everything look correct?",
+            "labels": {
+                "name": "Name",
+                "email": "Email",
+                "services": "Services",
+                "budget": "Budget",
+                "description": "Description"
+            }
+        },
+        "success": {
+            "title": "Message Sent!",
+            "subtitle": "Thanks for reaching out, {name}. I'll get back to you within 24 hours.",
+            "return": "Return Home"
+        },
+        "buttons": {
+            "next": "Next Step",
+            "back": "Back",
+            "submit": "Send Proposal"
+        }
+    },
+    "blog": {
+        "title": "Insights & Thoughts",
+        "subtitle": "Exploring the intersection of design, development, and AI.",
+        "read_more": "Read Article",
+        "back_home": "Back to Home"
     }
 }

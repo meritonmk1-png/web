@@ -4,7 +4,8 @@
         "pricing": "Preise",
         "ai_pilot": "KI-Pilot",
         "contact": "Kontakt",
-        "start_project": "Projekt Starten"
+        "start_project": "Projekt Starten",
+        "blog": "Blog"
     },
     "hero": {
         "headline": "KI-gestützte Websites. Schnell. Sicher. Wachstumsorientiert.",
@@ -205,5 +206,64 @@
             "button": "Projekt Starten",
             "note": "Erster Prototyp in 48 Stunden geliefert"
         }
+    },
+    "funnel": {
+        "step1": {
+            "title": "Fangen wir mit den Grundlagen an.",
+            "subtitle": "An wen darf ich dieses Angebot richten?",
+            "name_label": "Ihr Name",
+            "email_label": "Ihre E-Mail"
+        },
+        "step2": {
+            "title": "Was bauen wir?",
+            "subtitle": "Wählen Sie alles aus, was auf Ihr Projekt zutrifft.",
+            "budget_title": "Wie hoch ist Ihr Budget?",
+            "services": {
+                "web_design": "Webdesign",
+                "development": "Entwicklung",
+                "seo": "SEO-Optimierung",
+                "ecommerce": "E-Commerce",
+                "branding": "Branding",
+                "other": "Sonstiges"
+            },
+            "budgets": {
+                "small": "< 1.000 €",
+                "medium": "1.000 € - 5.000 €",
+                "large": "5.000 € - 10.000 €",
+                "enterprise": "10.000 €+"
+            }
+        },
+        "step3": {
+            "title": "Erzählen Sie mir mehr.",
+            "subtitle": "Beschreiben Sie Ihre Vision, Ziele oder spezifische Anforderungen.",
+            "placeholder": "Ich brauche eine Website, die..."
+        },
+        "step4": {
+            "title": "Überprüfen & Senden",
+            "subtitle": "Sieht alles korrekt aus?",
+            "labels": {
+                "name": "Name",
+                "email": "E-Mail",
+                "services": "Leistungen",
+                "budget": "Budget",
+                "description": "Beschreibung"
+            }
+        },
+        "success": {
+            "title": "Nachricht Gesendet!",
+            "subtitle": "Danke für Ihre Anfrage, {name}. Ich melde mich innerhalb von 24 Stunden bei Ihnen.",
+            "return": "Zurück zur Startseite"
+        },
+        "buttons": {
+            "next": "Nächster Schritt",
+            "back": "Zurück",
+            "submit": "Angebot Senden"
+        }
+    },
+    "blog": {
+        "title": "Einblicke & Gedanken",
+        "subtitle": "Erkundung der Schnittstelle von Design, Entwicklung und KI.",
+        "read_more": "Artikel lesen",
+        "back_home": "Zurück zur Startseite"
     }
 }
