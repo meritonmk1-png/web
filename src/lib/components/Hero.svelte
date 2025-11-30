@@ -120,7 +120,7 @@
         justify-content: center;
         background: #000;
         overflow: hidden;
-        padding: 0 2rem;
+        padding: 80px 2rem 0;
         box-sizing: border-box;
     }
 
@@ -479,7 +479,7 @@
 
     @media (max-width: 768px) {
         .hero {
-            padding: 0 1.5rem;
+            padding: 80px 1.5rem 0;
             min-height: 100dvh;
         }
 

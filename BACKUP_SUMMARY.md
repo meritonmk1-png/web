@@ -97,9 +97,9 @@ All components are fully responsive and include:
 
 6. **Pricing.svelte**
    - Three pricing tiers:
-     - Launchpad: €1,499
-     - Growth: €2,999
-     - Scale: €4,999
+     - Launchpad: €350
+     - Growth: €550
+     - Scale: €750
    - Feature comparison
    - CTA buttons linking to funnel
 
