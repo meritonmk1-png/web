@@ -1,4 +1,5 @@
 <script>
+    import emailjs from "@emailjs/browser";
     import { fly, fade } from "svelte/transition";
     import { onMount } from "svelte";
     import { t } from "svelte-i18n";
@@ -10,28 +11,16 @@
     let form = {
         name: "",
         email: "",
-        services: [],
-        budget: "",
+        plan: "",
+        addons: [],
         description: "",
     };
     let errors = {};
     let isSubmitting = false;
 
-    const services = [
-        { id: "web_design" },
-        { id: "development" },
-        { id: "seo" },
-        { id: "ecommerce" },
-        { id: "branding" },
-        { id: "other" },
-    ];
+    const plans = [{ id: "launchpad" }, { id: "growth" }, { id: "scale" }];
 
-    const budgets = [
-        { id: "small" },
-        { id: "medium" },
-        { id: "large" },
-        { id: "enterprise" },
-    ];
+    const addons = [{ id: "maintenance" }, { id: "ai_integration" }];
 
     function nextStep() {
         if (validateStep(step)) {
@@ -45,14 +34,16 @@
         step--;
     }
 
-    function toggleService(id) {
-        if (form.services.includes(id)) {
-            form.services = form.services.filter((s) => s !== id);
+    function selectPlan(id) {
+        form.plan = id;
+        if (errors.plan) errors.plan = null;
+    }
+
+    function toggleAddon(id) {
+        if (form.addons.includes(id)) {
+            form.addons = form.addons.filter((s) => s !== id);
         } else {
-            form.services = [...form.services, id];
-        }
-        if (errors.services && form.services.length > 0) {
-            errors.services = null;
+            form.addons = [...form.addons, id];
         }
     }
 
@@ -67,41 +58,52 @@
                 errors.email = true;
         }
         if (currentStep === 2) {
-            if (form.services.length === 0) errors.services = true;
-            if (!form.budget) errors.budget = true;
+            if (!form.plan) errors.plan = true;
         }
         return Object.keys(errors).length === 0;
     }
 
-    const encode = (data) => {
-        return Object.keys(data)
-            .map(
-                (key) =>
-                    encodeURIComponent(key) +
-                    "=" +
-                    encodeURIComponent(data[key]),
-            )
-            .join("&");
-    };
+    // Reactive validation for button state
+    $: isStepValid = (() => {
+        if (step === 1) {
+            return (
+                form.name.trim() !== "" &&
+                form.email.trim() !== "" &&
+                /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)
+            );
+        }
+        if (step === 2) {
+            return form.plan !== "";
+        }
+        if (step === 3) {
+            return true; // Optional fields
+        }
+        return true;
+    })();
 
     async function handleSubmit() {
         if (isSubmitting) return;
         isSubmitting = true;
 
-        try {
-            const submissionData = {
-                ...form,
-                services: form.services.join(", "),
-                "form-name": "project-inquiry",
-            };
+        const serviceID = "service_84dbgwp";
+        const templateID = "template_gqk8lso";
+        const publicKey = "HUbz31XN-IknC6Y2i";
 
-            await fetch("/", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                },
-                body: encode(submissionData),
-            });
+        const templateParams = {
+            from_name: form.name,
+            from_email: form.email,
+            plan: form.plan,
+            addons: form.addons.join(", "),
+            message: form.description,
+        };
+
+        try {
+            await emailjs.send(
+                serviceID,
+                templateID,
+                templateParams,
+                publicKey,
+            );
 
             direction = 1;
             step = 5; // Success step
@@ -114,12 +116,12 @@
     }
 </script>
 
-<!-- Hidden Netlify Form -->
+<!-- Hidden Netlify Form (Backup) -->
 <form name="project-inquiry" netlify netlify-honeypot="bot-field" hidden>
     <input type="text" name="name" />
     <input type="email" name="email" />
-    <input type="text" name="services" />
-    <input type="text" name="budget" />
+    <input type="text" name="plan" />
+    <input type="text" name="addons" />
     <textarea name="description"></textarea>
 </form>
 
@@ -200,44 +202,15 @@
 
                             <div
                                 class="options-grid"
-                                class:error-border={errors.services}
+                                class:error-border={errors.plan}
                             >
-                                {#each services as service}
+                                {#each plans as plan}
                                     <button
                                         class="option-card"
-                                        class:selected={form.services.includes(
-                                            service.id,
-                                        )}
-                                        on:click={() =>
-                                            toggleService(service.id)}
+                                        class:selected={form.plan === plan.id}
+                                        on:click={() => selectPlan(plan.id)}
                                     >
-                                        {$t(
-                                            `funnel.step2.services.${service.id}`,
-                                        )}
-                                    </button>
-                                {/each}
-                            </div>
-
-                            <h2 class="section-title">
-                                {$t("funnel.step2.budget_title")}
-                            </h2>
-                            <div
-                                class="options-grid small"
-                                class:error-border={errors.budget}
-                            >
-                                {#each budgets as budget}
-                                    <button
-                                        class="option-card"
-                                        class:selected={form.budget ===
-                                            budget.id}
-                                        on:click={() => {
-                                            form.budget = budget.id;
-                                            errors.budget = null;
-                                        }}
-                                    >
-                                        {$t(
-                                            `funnel.step2.budgets.${budget.id}`,
-                                        )}
+                                        {$t(`funnel.step2.plans.${plan.id}`)}
                                     </button>
                                 {/each}
                             </div>
@@ -247,12 +220,26 @@
                                 {$t("funnel.step3.subtitle")}
                             </p>
 
-                            <div class="input-group">
+                            <div class="options-grid">
+                                {#each addons as addon}
+                                    <button
+                                        class="option-card"
+                                        class:selected={form.addons.includes(
+                                            addon.id,
+                                        )}
+                                        on:click={() => toggleAddon(addon.id)}
+                                    >
+                                        {$t(`funnel.step3.addons.${addon.id}`)}
+                                    </button>
+                                {/each}
+                            </div>
+
+                            <div class="input-group" style="margin-top: 2rem;">
                                 <textarea
                                     bind:value={form.description}
                                     placeholder={$t("funnel.step3.placeholder")}
                                     class="input-field textarea"
-                                    rows="6"
+                                    rows="4"
                                 ></textarea>
                             </div>
                         {:else if step === 4}
@@ -276,32 +263,28 @@
                                 </div>
                                 <div class="review-item">
                                     <span class="label"
-                                        >{$t(
-                                            "funnel.step4.labels.services",
-                                        )}</span
+                                        >{$t("funnel.step4.labels.plan")}</span
                                     >
                                     <span class="value">
-                                        {form.services
-                                            .map((id) =>
-                                                $t(
-                                                    `funnel.step2.services.${id}`,
-                                                ),
-                                            )
-                                            .join(", ")}
+                                        {$t(`funnel.step2.plans.${form.plan}`)}
                                     </span>
                                 </div>
                                 <div class="review-item">
                                     <span class="label"
                                         >{$t(
-                                            "funnel.step4.labels.budget",
+                                            "funnel.step4.labels.addons",
                                         )}</span
                                     >
                                     <span class="value">
-                                        {form.budget
-                                            ? $t(
-                                                  `funnel.step2.budgets.${form.budget}`,
-                                              )
-                                            : "Not specified"}
+                                        {form.addons.length > 0
+                                            ? form.addons
+                                                  .map((id) =>
+                                                      $t(
+                                                          `funnel.step3.addons.${id}`,
+                                                      ),
+                                                  )
+                                                  .join(", ")
+                                            : "None"}
                                     </span>
                                 </div>
                                 {#if form.description}
@@ -366,7 +349,7 @@
                     <button
                         class="btn-primary"
                         on:click={nextStep}
-                        disabled={!validateStep(step)}
+                        disabled={!isStepValid}
                     >
                         {$t("funnel.buttons.next")}
                     </button>
@@ -462,12 +445,6 @@
         margin-bottom: 3rem;
     }
 
-    .section-title {
-        font-size: 1.5rem;
-        margin: 2rem 0 1rem;
-        color: #fff;
-    }
-
     .input-group {
         margin-bottom: 2rem;
     }
@@ -519,10 +496,6 @@
     .options-grid.error-border {
         border-color: #ef4444;
         background: rgba(239, 68, 68, 0.05);
-    }
-
-    .options-grid.small {
-        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     }
 
     .option-card {

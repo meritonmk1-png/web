@@ -1,4 +1,4 @@
-import adapter from '@sveltejs/adapter-netlify';
+import adapter from '@sveltejs/adapter-static';
 import { mdsvex } from 'mdsvex';
 
 /** @type {import('@sveltejs/kit').Config} */
@@ -12,17 +12,7 @@ const config = {
 	],
 
 	kit: {
-		adapter: adapter(),
-
-		// Prerendering for static site generation
-		prerender: {
-			entries: ['*'],
-			handleHttpError: ({ path, referrer, message }) => {
-				// ignore 404s for optional routes
-				if (message.includes('Not found')) return;
-				throw new Error(message);
-			}
-		}
+		adapter: adapter()
 	}
 };
 

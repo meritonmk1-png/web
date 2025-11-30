@@ -215,28 +215,22 @@
             "email_label": "Your Email"
         },
         "step2": {
-            "title": "What are we building?",
-            "subtitle": "Select all that apply to your project.",
-            "budget_title": "What's your budget?",
-            "services": {
-                "web_design": "Web Design",
-                "development": "Development",
-                "seo": "SEO Optimization",
-                "ecommerce": "E-Commerce",
-                "branding": "Branding",
-                "other": "Other"
-            },
-            "budgets": {
-                "small": "< $1k",
-                "medium": "$1k - $5k",
-                "large": "$5k - $10k",
-                "enterprise": "$10k+"
+            "title": "Choose your plan.",
+            "subtitle": "Select the package that best fits your goals.",
+            "plans": {
+                "launchpad": "Launchpad",
+                "growth": "Growth",
+                "scale": "Scale"
             }
         },
         "step3": {
-            "title": "Tell me more.",
-            "subtitle": "Describe your vision, goals, or any specific requirements.",
-            "placeholder": "I need a website that..."
+            "title": "Power up your project.",
+            "subtitle": "Select any additional services you need.",
+            "addons": {
+                "maintenance": "Maintenance & Updates",
+                "ai_integration": "AI Integration"
+            },
+            "placeholder": "Tell me more about your project..."
         },
         "step4": {
             "title": "Review & Send",
@@ -244,8 +238,8 @@
             "labels": {
                 "name": "Name",
                 "email": "Email",
-                "services": "Services",
-                "budget": "Budget",
+                "plan": "Selected Plan",
+                "addons": "Add-ons",
                 "description": "Description"
             }
         },

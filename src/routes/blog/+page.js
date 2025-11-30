@@ -1,3 +1,4 @@
+export const prerender = true;
 import { fetchMarkdownPosts } from '$lib/utils/posts';
 
 export const load = async () => {
@@ -6,3 +7,4 @@ export const load = async () => {
         posts
     };
 };
+
