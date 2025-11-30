@@ -1,10 +1,40 @@
 # Git Backup Summary - November 30, 2025
 
-## 📦 Backup Details
-- **Commit Hash**: 691306b
+## 📦 Latest Backup Details
+- **Latest Commit**: f13d733 (UI Improvements)
+- **Previous Commit**: 691306b (Main Features)
 - **Date**: November 30, 2025
 - **Branch**: master
 - **Remote**: GitHub (meritonmk1-png/web)
+
+## 🆕 Latest Changes (Commit f13d733)
+
+### UI Improvements & Fixes
+
+#### ✅ Fixed Navbar Overlap Issue
+- **Problem**: Fixed navbar was covering hero section text
+- **Solution**: Added 80px padding-top to hero section
+- **Impact**: Hero content now properly visible below navbar on all screen sizes
+- **Files Modified**: `Hero.svelte`
+
+#### ✅ Technology Stack Showcase
+- **Location**: Right side of navbar, after language switcher
+- **Technologies Displayed**:
+  - SvelteKit (orange/red logo)
+  - Next.js (white logo)
+  - WordPress (blue logo)
+  - Tailwind CSS (cyan logo)
+- **Features**:
+  - Glassmorphic design with subtle background
+  - Interactive hover effects (scale + lift)
+  - Tooltips on each icon
+  - Smooth 0.3s transitions
+  - Icons: 60% opacity → 100% on hover
+  - Hover animation: scale(1.1) + translateY(-2px)
+- **Responsive**: Automatically hides on tablets/mobile (<1024px)
+- **Files Modified**: `Navbar.svelte`
+
+---
 
 ## ✅ What's Included in This Backup
 
